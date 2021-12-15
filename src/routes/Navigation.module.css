@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  padding: 5px 10px 5px 10px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  margin-left: auto;
+}
+
+.faBars {
+  cursor: pointer;
+  font-size: 25px;
+  height: 50px;
+}
+.faPlus {
+  margin-left: 20px;
+  margin-right: 0px;
+}
+
+.reactLogo {
+  height: 50px;
+}
+
+.tsLogo {
+  height: 40px;
+}
