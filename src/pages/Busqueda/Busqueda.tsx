@@ -1,5 +1,5 @@
 import React from "react";
 
-export const index = () => {
+export const Busqueda = () => {
   return <div>Página de búsqueda</div>;
 };

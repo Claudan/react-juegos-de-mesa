@@ -2,3 +2,56 @@ nav {
   display: flex;
   padding: 10px;
 }
+
+.PreviewContainer {
+  display: flex;
+}
+
+.container {
+  padding: 25px;
+  background-color: #f6f6f9;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  /* border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem; */
+}
+
+.cardPreview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  width: 18rem;
+  margin-right: 10px;
+}
+
+.cardBody {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+}
+
+.h3 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px !important;
+  color: #495057;
+  margin-bottom: 20px;
+}

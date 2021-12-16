@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.form-control:focus {
+  background-color: #fff;
+  border-color: rgb(206, 212, 218) !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+.row {
+  --bs-gutter-x: none !important;
+}
