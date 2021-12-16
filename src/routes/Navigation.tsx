@@ -8,6 +8,9 @@ import reactLogo from "../logo.svg";
 import tsLogo from "../typescript.png";
 import styles from "./Navigation.module.css";
 import { Sidebar } from "../components/shared/Sidebar";
+import { ConsultasApi } from "../pages/ConsultasApi/ConsultasApi";
+import { AgregaJuego } from "../pages/AgregarJuego/AgregaJuego";
+import { MasInformacion } from "../pages/MasInformacion/MasInformacion";
 
 export const Navigation = () => {
   return (
@@ -39,11 +42,8 @@ export const Navigation = () => {
           </div>
         </nav>
         <Routes>
-          <Route
-            path="agrega-juego"
-            element={<h1>página para agregar juegos</h1>}
-          />
-          <Route path="busqueda" element={<h1>Página de búsqueda</h1>} />
+          <Route path="mas-informacion" element={<MasInformacion />} />
+          <Route path="consultas" element={<ConsultasApi />} />
           <Route path="juegos" element={<Juegos />} />
 
           <Route path="/*" element={<Navigate to="/juegos" replace />} />

@@ -1,0 +1,70 @@
+.avatar {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: white;
+  color: #555b6d;
+  border: solid 1px;
+  display: flex;
+  font-weight: 500;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+  border-radius: 50% !important;
+}
+
+.avatarContainer {
+  height: 50px;
+  width: 50px;
+  margin: 20px auto 5px auto;
+}
+
+.nombre {
+  color: white;
+}
+.userContainer {
+  text-align: center;
+}
+
+.ul {
+  list-style: none;
+  padding-left: 10px;
+}
+.ul li a {
+  text-decoration: none;
+  color: #a6b0cf;
+}
+
+.ul li a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.ul li {
+  margin-bottom: 1rem;
+}
+
+.faGamepad {
+  margin-right: 8px;
+}
+
+.faCode {
+  margin-right: 10px;
+}
+.faGithubAlt {
+  margin-right: 12px;
+}
+
+.menu {
+  padding: 10px 40px;
+}
+
+.tituloMenu {
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  cursor: default;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: wheat;
+  font-weight: 600;
+}

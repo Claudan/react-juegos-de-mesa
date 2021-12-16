@@ -47,3 +47,8 @@
 .row {
   --bs-gutter-x: none !important;
 }
+
+.active {
+  text-decoration: none;
+  color: white !important;
+}

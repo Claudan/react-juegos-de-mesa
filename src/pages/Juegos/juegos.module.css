@@ -18,13 +18,23 @@ nav {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
   background-clip: border-box;
   margin-bottom: 24px;
   -webkit-box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
   box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
-  /* border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem; */
+  width: 95%;
+  border-radius: 15px;
+  background-color: #fff;
+  /* background-color: #282c34;
+  color: white; */
+}
+/* 
+.imgContainer {
+} */
+
+.imgContainer img {
+  width: -webkit-fill-available;
+  max-width: 100%;
 }
 
 .cardPreview {
@@ -40,6 +50,13 @@ nav {
   box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
   width: 18rem;
   margin-right: 10px;
+  border-radius: 15px;
+  border: 1px solid rgb(0, 0, 0, 0);
+  padding: 5px;
+}
+
+.rowCard {
+  padding: 20px;
 }
 
 .cardBody {
@@ -54,4 +71,26 @@ nav {
   font-size: 16px !important;
   color: #495057;
   margin-bottom: 20px;
+}
+
+.opcionesFiltro {
+  padding-left: 1rem;
+}
+
+.opcionesFiltro li {
+  list-style: none;
+}
+
+.opcionesFiltro li a {
+  color: #007185 !important;
+  text-decoration: none;
+}
+
+.opcionesFiltro li a:hover {
+  text-decoration: underline;
+}
+
+.tituloFiltro {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
