@@ -9,8 +9,9 @@ import tsLogo from "../typescript.png";
 import styles from "./Navigation.module.css";
 import { Sidebar } from "../components/shared/Sidebar";
 import { ConsultasApi } from "../pages/ConsultasApi/ConsultasApi";
-import { AgregaJuego } from "../pages/AgregarJuego/AgregaJuego";
 import { MasInformacion } from "../pages/MasInformacion/MasInformacion";
+import { AgregaJuego } from "../pages/AgregarJuego/AgregaJuego";
+import { Sesion } from "../pages/Sesion/Sesion";
 
 export const Navigation = () => {
   return (
@@ -44,8 +45,9 @@ export const Navigation = () => {
         <Routes>
           <Route path="mas-informacion" element={<MasInformacion />} />
           <Route path="consultas" element={<ConsultasApi />} />
+          <Route path="agregar-juego" element={<AgregaJuego />} />
           <Route path="juegos" element={<Juegos />} />
-
+          <Route path="sesion" element={<Sesion />} />
           <Route path="/*" element={<Navigate to="/juegos" replace />} />
         </Routes>
       </div>

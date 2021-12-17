@@ -31,6 +31,10 @@ nav {
   padding: 1rem 1rem;
 }
 
+.cardBody p {
+  margin-bottom: 1.5rem;
+}
+
 .h3 {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
@@ -40,15 +44,6 @@ nav {
   margin-bottom: 20px;
 }
 
-.buscador {
-  width: 100%;
-}
-
-.codigo {
-  color: white;
-  background-color: #282c34;
-}
-
-.codigo pre {
-  padding: 20px 5px;
+.sessionCard {
+  margin: 0px auto 24px 0px;
 }

@@ -31,6 +31,15 @@ nav {
   padding: 1rem 1rem;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex p {
+  margin-right: 7px;
+  margin-bottom: 0px;
+}
+
 .h3 {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
@@ -38,17 +47,4 @@ nav {
   font-size: 16px !important;
   color: #495057;
   margin-bottom: 20px;
-}
-
-.buscador {
-  width: 100%;
-}
-
-.codigo {
-  color: white;
-  background-color: #282c34;
-}
-
-.codigo pre {
-  padding: 20px 5px;
 }

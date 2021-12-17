@@ -5,12 +5,17 @@ nav {
 
 .PreviewContainer {
   display: flex;
+  width: 95%;
 }
 
 .container {
   padding: 25px;
   background-color: #f6f6f9;
 }
+
+/* .filtroContainer {
+  padding-left: 20px;
+} */
 
 .card {
   position: relative;
@@ -25,16 +30,24 @@ nav {
   width: 95%;
   border-radius: 15px;
   background-color: #fff;
-  /* background-color: #282c34;
-  color: white; */
 }
-/* 
+
 .imgContainer {
-} */
+  position: relative;
+  min-height: 15rem;
+}
 
 .imgContainer img {
-  width: -webkit-fill-available;
+  width: auto;
+  max-height: 100%;
   max-width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 0px 0px;
 }
 
 .cardPreview {
@@ -48,7 +61,7 @@ nav {
   margin-bottom: 24px;
   -webkit-box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
   box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
-  width: 18rem;
+  /* width: 18rem; */
   margin-right: 10px;
   border-radius: 15px;
   border: 1px solid rgb(0, 0, 0, 0);
@@ -93,4 +106,18 @@ nav {
 .tituloFiltro {
   font-weight: 600;
   margin-bottom: 0.5rem;
+}
+
+.valorar {
+  width: 100%;
+}
+
+.valorar:hover {
+  border: solid 1px rgb(20, 20, 20, 0.2) !important;
+}
+
+.faInfo {
+  color: #ffc107;
+  float: left;
+  margin-top: 3px;
 }

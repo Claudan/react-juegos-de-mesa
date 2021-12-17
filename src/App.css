@@ -52,3 +52,44 @@
   text-decoration: none;
   color: white !important;
 }
+
+/*google button*/
+.google-button {
+  height: 43px;
+  width: 100%;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  background: white;
+  color: #737373;
+  border-radius: 3px;
+  white-space: nowrap;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+  padding: 0;
+}
+.google-button:hover {
+  opacity: 0.9;
+  border-color: black;
+}
+.google-button__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px 0 11px 8px;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+}
+
+.google-button__icon--plus {
+  width: 27px;
+}
+
+.google-button__text {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Roboto", arial, sans-serif;
+}
