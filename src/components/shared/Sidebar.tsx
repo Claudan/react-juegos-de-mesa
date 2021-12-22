@@ -1,4 +1,3 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCode,
@@ -32,12 +31,6 @@ export const Sidebar = () => {
             <NavLink to="agregar-juego" end>
               <FontAwesomeIcon icon={faPlus} className={styles.faPlus} />
               Agregar juego
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="sesion" end>
-              <FontAwesomeIcon icon={faUser} className={styles.faUser} />
-              Sesión de usuario
             </NavLink>
           </li>
           <li>

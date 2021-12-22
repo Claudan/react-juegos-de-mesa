@@ -1,5 +1,5 @@
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
 import { Juegos } from "../pages/Juegos/Juegos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -11,9 +11,12 @@ import { Sidebar } from "../components/shared/Sidebar";
 import { ConsultasApi } from "../pages/ConsultasApi/ConsultasApi";
 import { MasInformacion } from "../pages/MasInformacion/MasInformacion";
 import { AgregaJuego } from "../pages/AgregarJuego/AgregaJuego";
-import { Sesion } from "../pages/Sesion/Sesion";
+import { JuegoDetallado } from "../pages/JuegoDetallado/JuegoDetallado";
 
 export const Navigation = () => {
+  const [state, setState] = useState({
+    isBusquedaFocused: false,
+  });
   return (
     <BrowserRouter>
       <div className={styles.sidebar}>
@@ -28,13 +31,25 @@ export const Navigation = () => {
             <span className={styles.spanBusqueda} id="basic-addon1">
               <FontAwesomeIcon icon={faSearch} className={styles.faSearch} />
             </span>
-            <input
-              className={`form-control ${styles.inputBusqueda}`}
-              type="search"
-              aria-label="Search"
-              autoComplete="off"
-              placeholder="Búsqueda"
-            />
+            <div className={styles.autocomplete}>
+              <input
+                className={`form-control ${styles.inputBusqueda}`}
+                type="search"
+                aria-label="Search"
+                autoComplete="off"
+                placeholder="Búsqueda"
+                onFocus={(e) => setState({ ...state, isBusquedaFocused: true })}
+                onBlur={(e) => setState({ ...state, isBusquedaFocused: false })}
+              />
+              <div
+                className={styles.autocompleteItems}
+                style={{ display: state.isBusquedaFocused ? "unset" : "none" }}>
+                <div className={styles.autocompleteItem}>
+                  <strong>Chile</strong>
+                  <input type="hidden" value="Chile" />
+                </div>
+              </div>
+            </div>
           </form>
           <div className={styles.logo}>
             <img src={tsLogo} alt="Typescript" className={styles.tsLogo} />
@@ -47,7 +62,7 @@ export const Navigation = () => {
           <Route path="consultas" element={<ConsultasApi />} />
           <Route path="agregar-juego" element={<AgregaJuego />} />
           <Route path="juegos" element={<Juegos />} />
-          <Route path="sesion" element={<Sesion />} />
+          <Route path="juego-detallado" element={<JuegoDetallado />} />
           <Route path="/*" element={<Navigate to="/juegos" replace />} />
         </Routes>
       </div>

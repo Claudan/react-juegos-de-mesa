@@ -26,9 +26,28 @@ nav {
   padding: 20px;
 }
 
+.cardBody label {
+  font-weight: 600;
+}
+
+.cardBody .form-group {
+  padding: 0px 0px 10px 0px;
+}
+
+.cantidadJugadoresMin {
+  padding-right: 5px;
+}
+
+.cantidadJugadoresMax {
+  padding-left: 5px;
+}
 .cardBody {
   flex: 1 1 auto;
   padding: 1rem 1rem;
+}
+
+.cardBody form span {
+  color: red;
 }
 
 .flex {
@@ -47,4 +66,23 @@ nav {
   font-size: 16px !important;
   color: #495057;
   margin-bottom: 20px;
+}
+
+.captchaWrapper {
+  width: fit-content;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.captchaWrapper div div div {
+  margin-left: auto;
+}
+.captchaWrapper p {
+  color: red;
+}
+
+.submitBtn {
+  float: right;
+  width: 300px;
+  margin-top: 10px;
 }
