@@ -3,6 +3,21 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import axios from "axios";
+import Swal from "sweetalert2";
+
+interface FormValues {
+  nombre: string;
+  desarrollador: string;
+  descripcion: string;
+  edadMin: number;
+  duracion: number;
+  jugadoresMin: number;
+  jugadoresMax: number;
+  imagen: File[];
+  email: string;
+  password: string;
+}
 
 export const AgregaJuego = () => {
   const captcha = useRef<ReCAPTCHA>(null);
@@ -10,6 +25,7 @@ export const AgregaJuego = () => {
     valido: false,
     touched: false,
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const onChangeCaptcha = () => {
     if (captcha.current?.getValue()) {
@@ -18,69 +34,107 @@ export const AgregaJuego = () => {
       setCaptchaState({ valido: false, touched: true });
     }
   };
-  const {
-    values,
-    setFieldValue,
-    handleSubmit,
-    getFieldProps,
-    touched,
-    errors,
-  } = useFormik({
-    initialValues: {
-      nombre: "",
-      desarrollador: "",
-      descripcion: "",
-      edadMin: 4,
-      jugadoresMin: 1,
-      jugadoresMax: 2,
-      imagen: [],
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-      setCaptchaState({ ...captchaState, touched: true });
-    },
-    validationSchema: Yup.object({
-      nombre: Yup.string()
-        .max(30, "Debe tener máximo 30 caracteres")
-        .required("Requerido"),
-      desarrollador: Yup.string()
-        .max(30, "Debe tener máximo 30 caracteres")
-        .required("Requerido"),
-      descripcion: Yup.string()
-        .max(500, "Debe tener máximo 500 caracteres")
-        .required("Requerido"),
-      edadMin: Yup.number().min(1, "Mínimo es 1"),
-      jugadoresMin: Yup.number().min(1, "Mínimo es 1"),
-      jugadoresMax: Yup.number().min(1, "Mínimo es 1"),
-      imagen: Yup.mixed()
-        .required("Requerido")
-        .test("fileType", "Formato de archivo no soportado", function (value) {
-          if (value.length === 0) {
-            return false;
-          }
-          const SUPPORTED_FORMATS = [
-            "image/jpg",
-            "image/jpeg",
-            "image/png",
-            "image/webp",
-          ];
-          return SUPPORTED_FORMATS.includes(value[0].type);
-        })
-        .test("fileSize", "El tamaño del archivo supera los 5MB", (value) => {
-          if (value.length === 0) {
-            return false;
-          }
-          const sizeInBytes = 5000000; //5MB
-          return value[0].size <= sizeInBytes;
-        }),
-      email: Yup.string()
-        .email("El correo no tienen un formato válido")
-        .required("Requerido"),
-      password: Yup.string().required("Requerido"),
-    }),
-  });
+
+  const insertaJuego = async (values: FormValues) => {
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.set("nombre", values.nombre);
+    formData.set("desarrollador", values.desarrollador);
+    formData.set("descripcion", values.descripcion);
+    formData.set("edad_minima", values.edadMin.toString());
+    formData.set("duracion", values.duracion.toString());
+    formData.set("cantidad_jugadores_minima", values.jugadoresMin.toString());
+    formData.set("cantidad_jugadores_maxima", values.jugadoresMax.toString());
+    formData.append("imagenes", values.imagen[0]);
+    formData.set("email", values.email);
+    formData.set("password", values.password);
+
+    axios
+      .post(`${process.env.REACT_APP_BACKEND}/juego/insertaJuego`, formData)
+      .then(() => {
+        setIsLoading(false);
+        Swal.fire(
+          "Agregado correctamente",
+          "El juego de mesa se ha agregado en nuestro sistema",
+          "success"
+        );
+      })
+      .catch(() => {
+        setIsLoading(false);
+        Swal.fire(
+          "No se ha podido agregar",
+          "Verifica que tus credenciales sean correctas y que el juego no haya sido agregado previamente",
+          "error"
+        );
+      });
+  };
+
+  const { setFieldValue, handleSubmit, getFieldProps, touched, errors } =
+    useFormik({
+      initialValues: {
+        nombre: "",
+        desarrollador: "",
+        descripcion: "",
+        edadMin: 4,
+        duracion: 15,
+        jugadoresMin: 1,
+        jugadoresMax: 2,
+        imagen: [],
+        email: "",
+        password: "",
+      },
+      onSubmit: (values) => {
+        if (captchaState.valido) {
+          insertaJuego(values);
+        } else {
+          setCaptchaState({ ...captchaState, touched: true });
+        }
+      },
+      validationSchema: Yup.object({
+        nombre: Yup.string()
+          .max(30, "Debe tener máximo 30 caracteres")
+          .required("Requerido"),
+        desarrollador: Yup.string()
+          .max(30, "Debe tener máximo 30 caracteres")
+          .required("Requerido"),
+        descripcion: Yup.string()
+          .max(500, "Debe tener máximo 500 caracteres")
+          .required("Requerido"),
+        edadMin: Yup.number().min(1, "Mínimo es 1"),
+        duracion: Yup.number().min(1, "Mínimo es 1"),
+        jugadoresMin: Yup.number().min(1, "Mínimo es 1"),
+        jugadoresMax: Yup.number().min(1, "Mínimo es 1"),
+        imagen: Yup.mixed()
+          .required("Requerido")
+          .test(
+            "fileType",
+            "Formato de archivo no soportado",
+            function (value) {
+              if (value.length === 0) {
+                return false;
+              }
+              const SUPPORTED_FORMATS = [
+                "image/jpg",
+                "image/jpeg",
+                "image/png",
+                "image/webp",
+              ];
+              return SUPPORTED_FORMATS.includes(value[0].type);
+            }
+          )
+          .test("fileSize", "El tamaño del archivo supera los 5MB", (value) => {
+            if (value.length === 0) {
+              return false;
+            }
+            const sizeInBytes = 5000000; //5MB
+            return value[0].size <= sizeInBytes;
+          }),
+        email: Yup.string()
+          .email("El correo no tienen un formato válido")
+          .required("Requerido"),
+        password: Yup.string().required("Requerido"),
+      }),
+    });
 
   return (
     <div className={styles.container}>
@@ -133,6 +187,17 @@ export const AgregaJuego = () => {
                 />
                 {touched.edadMin && errors.edadMin && (
                   <span>{errors.edadMin}</span>
+                )}
+              </div>
+              <div className="form-group">
+                <label>Duración promedio en minutos</label>
+                <input
+                  className="form-control"
+                  type="number"
+                  {...getFieldProps("duracion")}
+                />
+                {touched.duracion && errors.duracion && (
+                  <span>{errors.duracion}</span>
                 )}
               </div>
               <div className={"row"}>
@@ -209,12 +274,22 @@ export const AgregaJuego = () => {
                   )}
                 </div>
               </div>
-
-              <button
-                type="submit"
-                className={`${styles.submitBtn} btn btn-primary`}>
-                Confirmar
-              </button>
+              {isLoading ? (
+                <button
+                  disabled
+                  className={`${styles.submitBtn} btn btn-primary`}>
+                  <span
+                    className="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"></span>
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className={`${styles.submitBtn} btn btn-primary`}>
+                  Confirmar
+                </button>
+              )}
             </form>
           </div>
         </div>

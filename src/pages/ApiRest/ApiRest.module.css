@@ -18,7 +18,7 @@ nav {
   margin-bottom: 24px;
   -webkit-box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
   box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
-  width: 95%;
+
   border-radius: 15px;
   background-color: #fff;
 }
@@ -51,4 +51,39 @@ nav {
 
 .codigo pre {
   padding: 20px 5px;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.autocompleteItems {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocompleteItem {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.autocompleteItems div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocompleteItem:hover {
+  background-color: #d4d4d4;
 }

@@ -1,10 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCode,
-  faGamepad,
-  faUser,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCode, faGamepad, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import styles from "./sidebar.module.css";
 import { NavLink } from "react-router-dom";

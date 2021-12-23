@@ -24,7 +24,7 @@ export const useJuegoDetallado = (nombreJuego: string) => {
 
   useEffect(() => {
     getJuegoDetallado();
-  }, []);
+  }, [nombreJuego]);
 
   return {
     juego,
