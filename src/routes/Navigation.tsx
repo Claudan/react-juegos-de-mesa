@@ -12,19 +12,60 @@ import { MasInformacion } from "../pages/MasInformacion/MasInformacion";
 import { AgregaJuego } from "../pages/AgregarJuego/AgregaJuego";
 import { JuegoDetallado } from "../pages/JuegoDetallado/JuegoDetallado";
 import { Buscador } from "../components/shared/Buscador";
+import { useRef, useState, useLayoutEffect, useEffect } from "react";
 
 export const Navigation = () => {
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  const [sidebarOpened, setSidebarOpened] = useState(true);
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const openSidebar = () => {
+    sidebarRef.current!.style.width = "250px";
+    mainRef.current!.style.marginLeft = "250px";
+    setSidebarOpened(true);
+  };
+  const closeSidebar = () => {
+    sidebarRef.current!.style.width = "0px";
+    mainRef.current!.style.marginLeft = "0px";
+    setSidebarOpened(false);
+  };
+
+  const handleSidebar = () => {
+    if (!sidebarOpened) {
+      openSidebar();
+    } else {
+      closeSidebar();
+    }
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+  }, []);
+
+  useEffect(() => {
+    if (width < 840) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  }, [width]);
+
   return (
     <BrowserRouter>
-      <div className={styles.sidebar}>
+      <div ref={sidebarRef} className={styles.sidebar}>
         <Sidebar />
       </div>
-      <div className={`${styles.mainLayout} main-layout`}>
+      <div ref={mainRef} className={`${styles.mainLayout} main-layout`}>
         <nav className={styles.nav}>
-          <div>
-            <FontAwesomeIcon icon={faBars} className={styles.faBars} />
+          <div className={styles.buscadorContainer}>
+            <div onClick={handleSidebar}>
+              <FontAwesomeIcon icon={faBars} className={styles.faBars} />
+            </div>
+            <Buscador />
           </div>
-          <Buscador />
           <div className={styles.logo}>
             <img src={tsLogo} alt="Typescript" className={styles.tsLogo} />
             <FontAwesomeIcon icon={faPlus} className={styles.faPlus} />

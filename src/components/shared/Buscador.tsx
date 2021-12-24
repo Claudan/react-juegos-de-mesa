@@ -24,9 +24,11 @@ export const Buscador = () => {
 
   useEffect(() => {
     let sugerencias = Array<string>();
-    const MAX_SUGERENCIAS = 5;
+    const MAX_SUGERENCIAS = 7;
     autocomplete?.map((el) => {
-      sugerencias.push(el.nombre);
+      if (sugerencias.length < MAX_SUGERENCIAS) {
+        sugerencias.push(el.nombre);
+      }
     });
     setState({
       ...state,
@@ -39,7 +41,7 @@ export const Buscador = () => {
     let sugerencias = Array<string>();
     let nombreJuego = "";
     let valor = "";
-    const MAX_SUGERENCIAS = 5;
+    const MAX_SUGERENCIAS = 7;
     state.autocomplete.map((juego: Juego) => {
       nombreJuego = juego.nombre.toLowerCase();
       valor = state.valorIngresado.toLocaleLowerCase();
@@ -51,7 +53,7 @@ export const Buscador = () => {
   }, [state.valorIngresado]);
 
   return (
-    <form className={styles.formBusqueda}>
+    <form action={`/juego-detallado`} className={styles.formBusqueda}>
       <span className={styles.spanBusqueda}>
         <FontAwesomeIcon icon={faSearch} className={styles.faSearch} />
       </span>
@@ -62,6 +64,7 @@ export const Buscador = () => {
           aria-label="Search"
           autoComplete="off"
           placeholder="Búsqueda"
+          name="q"
           value={state.valorIngresado}
           onChange={(e) =>
             setState({ ...state, valorIngresado: e.target.value })

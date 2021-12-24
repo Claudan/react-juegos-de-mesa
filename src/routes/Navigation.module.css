@@ -6,6 +6,7 @@
 
 .logo {
   margin-left: auto;
+  text-align: center;
 }
 
 .faBars {
@@ -42,4 +43,18 @@
 
 .mainLayout {
   margin-left: 250px;
+  transition: 0.3s;
+}
+
+.buscadorContainer {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: block;
+  }
+  .mainLayout {
+    width: 100%;
+  }
 }

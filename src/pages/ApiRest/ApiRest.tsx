@@ -20,7 +20,7 @@ export const ApiRest = () => {
 
   useEffect(() => {
     let sugerencias = Array<string>();
-    const MAX_SUGERENCIAS = 5;
+    const MAX_SUGERENCIAS = 6;
     autocomplete?.map((el) => {
       sugerencias.push(el.nombre);
     });
@@ -37,7 +37,7 @@ export const ApiRest = () => {
     let sugerencias = Array<string>();
     let nombreJuego = "";
     let valor = "";
-    const MAX_SUGERENCIAS = 5;
+    const MAX_SUGERENCIAS = 6;
     state.autocomplete.map((juego: Juego) => {
       nombreJuego = juego.nombre.toLowerCase();
       valor = state.valorIngresado.toLocaleLowerCase();
@@ -76,7 +76,11 @@ export const ApiRest = () => {
                     setState({ ...state, valorIngresado: e.target.value })
                   }
                   onFocus={(e) =>
-                    setState({ ...state, isBusquedaFocused: true })
+                    setState({
+                      ...state,
+                      isBusquedaFocused: true,
+                      valorIngresado: "",
+                    })
                   }
                   onBlur={(e) =>
                     setState({ ...state, isBusquedaFocused: false })

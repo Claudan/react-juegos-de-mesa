@@ -15,7 +15,7 @@ export const Juegos = () => {
         ) : (
           <>
             {juegos.map((juego, i) => (
-              <div className="col-6" key={`juego_${i}`}>
+              <div className="col-lg-6 col-sm-12" key={`juego_${i}`}>
                 <PreviewJuego juego={juego} />
               </div>
             ))}

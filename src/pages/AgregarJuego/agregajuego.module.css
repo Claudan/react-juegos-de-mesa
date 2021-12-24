@@ -86,3 +86,7 @@ nav {
   width: 300px;
   margin-top: 10px;
 }
+
+.spinner {
+  color: white !important;
+}

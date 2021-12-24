@@ -48,3 +48,9 @@
   margin-bottom: 20px;
   margin-left: auto;
 }
+
+@media (max-width: 768px) {
+  .cardPreview {
+    margin-right: 0px;
+  }
+}

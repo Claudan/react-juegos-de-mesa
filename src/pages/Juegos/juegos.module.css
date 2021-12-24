@@ -126,3 +126,9 @@ nav {
   float: left;
   margin-top: 3px;
 }
+
+@media (max-width: 768px) {
+  .cardPreview {
+    margin-right: 0px;
+  }
+}

@@ -53,6 +53,7 @@ export const AgregaJuego = () => {
       .post(`${process.env.REACT_APP_BACKEND}/juego/insertaJuego`, formData)
       .then(() => {
         setIsLoading(false);
+        resetForm();
         Swal.fire(
           "Agregado correctamente",
           "El juego de mesa se ha agregado en nuestro sistema",
@@ -69,72 +70,78 @@ export const AgregaJuego = () => {
       });
   };
 
-  const { setFieldValue, handleSubmit, getFieldProps, touched, errors } =
-    useFormik({
-      initialValues: {
-        nombre: "",
-        desarrollador: "",
-        descripcion: "",
-        edadMin: 4,
-        duracion: 15,
-        jugadoresMin: 1,
-        jugadoresMax: 2,
-        imagen: [],
-        email: "",
-        password: "",
-      },
-      onSubmit: (values) => {
-        if (captchaState.valido) {
-          insertaJuego(values);
-        } else {
-          setCaptchaState({ ...captchaState, touched: true });
-        }
-      },
-      validationSchema: Yup.object({
-        nombre: Yup.string()
-          .max(30, "Debe tener máximo 30 caracteres")
-          .required("Requerido"),
-        desarrollador: Yup.string()
-          .max(30, "Debe tener máximo 30 caracteres")
-          .required("Requerido"),
-        descripcion: Yup.string()
-          .max(500, "Debe tener máximo 500 caracteres")
-          .required("Requerido"),
-        edadMin: Yup.number().min(1, "Mínimo es 1"),
-        duracion: Yup.number().min(1, "Mínimo es 1"),
-        jugadoresMin: Yup.number().min(1, "Mínimo es 1"),
-        jugadoresMax: Yup.number().min(1, "Mínimo es 1"),
-        imagen: Yup.mixed()
-          .required("Requerido")
-          .test(
-            "fileType",
-            "Formato de archivo no soportado",
-            function (value) {
-              if (value.length === 0) {
-                return false;
-              }
-              const SUPPORTED_FORMATS = [
-                "image/jpg",
-                "image/jpeg",
-                "image/png",
-                "image/webp",
-              ];
-              return SUPPORTED_FORMATS.includes(value[0].type);
-            }
-          )
-          .test("fileSize", "El tamaño del archivo supera los 5MB", (value) => {
+  const {
+    setFieldValue,
+    handleSubmit,
+    getFieldProps,
+    touched,
+    errors,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      nombre: "",
+      desarrollador: "",
+      descripcion: "",
+      edadMin: 4,
+      duracion: 15,
+      jugadoresMin: 1,
+      jugadoresMax: 2,
+      imagen: [],
+      email: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      if (captchaState.valido) {
+        insertaJuego(values);
+      } else {
+        setCaptchaState({ ...captchaState, touched: true });
+      }
+    },
+    validationSchema: Yup.object({
+      nombre: Yup.string()
+        .max(50, "Debe tener máximo 50 caracteres")
+        .required("Requerido"),
+      desarrollador: Yup.string()
+        .max(50, "Debe tener máximo 50 caracteres")
+        .required("Requerido"),
+      descripcion: Yup.string()
+        .max(2000, "Debe tener máximo 2000 caracteres")
+        .required("Requerido"),
+      edadMin: Yup.number().min(1, "Mínimo es 1"),
+      duracion: Yup.number().min(1, "Mínimo es 1"),
+      jugadoresMin: Yup.number().min(1, "Mínimo es 1"),
+      jugadoresMax: Yup.number().min(1, "Mínimo es 1"),
+      imagen: Yup.mixed()
+        .required("Requerido")
+        .test(
+          "fileType",
+          "Agregue una imagen en el formato soportado",
+          function (value) {
             if (value.length === 0) {
               return false;
             }
-            const sizeInBytes = 5000000; //5MB
-            return value[0].size <= sizeInBytes;
-          }),
-        email: Yup.string()
-          .email("El correo no tienen un formato válido")
-          .required("Requerido"),
-        password: Yup.string().required("Requerido"),
-      }),
-    });
+            const SUPPORTED_FORMATS = [
+              "image/jpg",
+              "image/jpeg",
+              "image/png",
+              "image/webp",
+            ];
+            return SUPPORTED_FORMATS.includes(value[0].type);
+          }
+        )
+        .test("fileSize", "El tamaño del archivo supera los 5MB", (value) => {
+          if (value.length === 0) {
+            return false;
+          }
+          const sizeInBytes = 5000000; //5MB
+          return value[0].size <= sizeInBytes;
+        }),
+      email: Yup.string()
+        .email("El correo no tienen un formato válido")
+        .required("Requerido"),
+      password: Yup.string().required("Requerido"),
+    }),
+  });
 
   return (
     <div className={styles.container}>
@@ -279,7 +286,7 @@ export const AgregaJuego = () => {
                   disabled
                   className={`${styles.submitBtn} btn btn-primary`}>
                   <span
-                    className="spinner-border spinner-border-sm"
+                    className={`${styles.spinner} spinner-border spinner-border-sm`}
                     role="status"
                     aria-hidden="true"></span>
                 </button>

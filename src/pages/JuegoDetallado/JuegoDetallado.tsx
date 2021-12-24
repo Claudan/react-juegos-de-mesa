@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useJuegoDetallado } from "../../hooks/useJuegoDetallado";
 import queryString from "query-string";
 import styles from "./JuegoDetallado.module.css";
+import { JuegoNoEncontrado } from "./JuegoNoEncontrado";
 
 export const JuegoDetallado = () => {
   const location = useLocation();
@@ -22,29 +23,34 @@ export const JuegoDetallado = () => {
           <></>
         ) : (
           <>
-            <div className={`row`}>
-              <div className={`${styles.imgContainer} col-4`}>
-                <img
-                  className="card-img-top"
-                  src={juego?.imagenes[0].ruta}
-                  alt="nombre juego"
-                />
-              </div>
-              <div className={`${styles.infoConatiner} col-8`}>
-                <h5 className="card-title">{juego?.nombre}</h5>
-                <p className="card-text">{juego?.descripcion}</p>
-                <ul>
-                  <li>Desarrollador: {juego?.desarrollador}</li>
-                  <li>Edad mínima: {juego?.edad_minima} años</li>
-                  <li>
-                    Jugadores: {juego?.cantidad_jugadores_minima} {" - "}
-                    {juego?.cantidad_jugadores_maxima}
-                  </li>
-                  <li>Duración aproximada: {juego?.duracion} minutos</li>
-                </ul>
-              </div>
-            </div>
-            <div className="card-body"></div>
+            {!juego?.nombre ? (
+              <JuegoNoEncontrado />
+            ) : (
+              <>
+                <div className={`row`}>
+                  <div className={`${styles.imgContainer} col-lg-4 col-sm-12`}>
+                    <img
+                      className="card-img-top"
+                      src={juego?.imagenes[0].ruta}
+                      alt="nombre juego"
+                    />
+                  </div>
+                  <div className={`${styles.infoConatiner} col-lg-8 col-sm-12`}>
+                    <h5 className="card-title">{juego?.nombre}</h5>
+                    <p className="card-text">{juego?.descripcion}</p>
+                    <ul>
+                      <li>Desarrollador: {juego?.desarrollador}</li>
+                      <li>Edad mínima: {juego?.edad_minima} años</li>
+                      <li>
+                        Jugadores: {juego?.cantidad_jugadores_minima} {" - "}
+                        {juego?.cantidad_jugadores_maxima}
+                      </li>
+                      <li>Duración aproximada: {juego?.duracion} minutos</li>
+                    </ul>
+                  </div>
+                </div>
+              </>
+            )}
           </>
         )}
       </div>
