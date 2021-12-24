@@ -13,13 +13,13 @@ import { AgregaJuego } from "../pages/AgregarJuego/AgregaJuego";
 import { JuegoDetallado } from "../pages/JuegoDetallado/JuegoDetallado";
 import { Buscador } from "../components/shared/Buscador";
 import { useRef, useState, useLayoutEffect, useEffect } from "react";
+import { Arquitectura } from "../pages/Arquitectura/Arquitectura";
 
 export const Navigation = () => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
 
   const [sidebarOpened, setSidebarOpened] = useState(true);
-
   const [width, setWidth] = useState(window.innerWidth);
 
   const openSidebar = () => {
@@ -74,6 +74,7 @@ export const Navigation = () => {
         </nav>
         <Routes>
           <Route path="mas-informacion" element={<MasInformacion />} />
+          <Route path="arquitectura" element={<Arquitectura />} />
           <Route path="consultas" element={<ApiRest />} />
           <Route path="agregar-juego" element={<AgregaJuego />} />
           <Route path="juegos" element={<Juegos />} />

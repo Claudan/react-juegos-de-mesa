@@ -20,9 +20,11 @@ export const ApiRest = () => {
 
   useEffect(() => {
     let sugerencias = Array<string>();
-    const MAX_SUGERENCIAS = 6;
+    const MAX_SUGERENCIAS = 8;
     autocomplete?.map((el) => {
-      sugerencias.push(el.nombre);
+      if (sugerencias.length < MAX_SUGERENCIAS) {
+        sugerencias.push(el.nombre);
+      }
     });
     setState({
       ...state,
@@ -37,7 +39,7 @@ export const ApiRest = () => {
     let sugerencias = Array<string>();
     let nombreJuego = "";
     let valor = "";
-    const MAX_SUGERENCIAS = 6;
+    const MAX_SUGERENCIAS = 8;
     state.autocomplete.map((juego: Juego) => {
       nombreJuego = juego.nombre.toLowerCase();
       valor = state.valorIngresado.toLocaleLowerCase();
@@ -55,9 +57,12 @@ export const ApiRest = () => {
         <div className={`${styles.rowCard}`}>
           <div className={`${styles.cardBody}`}>
             <p className="card-text">
-              Para esta demostración desarrollé un microservicio rest (tiene
-              habilitado CORS), el cual provee los endpoints necesarios para
-              este mini proyecto.
+              Para este mini proyecto desarrollé un microservicio rest (tiene
+              habilitado CORS), el cual provee los endpoints necesarios.
+            </p>
+            <p className="card-text">
+              A continuación se muestra un ejemplo que permite consultar por un
+              juego de mesa dado un nombre.
             </p>
           </div>
         </div>

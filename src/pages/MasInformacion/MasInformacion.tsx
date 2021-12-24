@@ -8,10 +8,31 @@ export const MasInformacion = () => {
         <div className={`${styles.rowCard}`}>
           <div className={`${styles.cardBody}`}>
             <p className="card-text">
-              Este mini proyecto consiste en una aplicación web que hace fetch a
-              un microservicio con juegos de mesa que desarrollé con objetivos
-              de demostración.
+              El objetivo de este proyecto es funcionar como demostración que
+              dejo como repositorio público en mi cuenta de github.
             </p>
+
+            <p className="card-text">
+              Desarrollé el sistema completo, tanto el frontend como el backend
+              y realicé su posterior despliegue en instancias de mi cuenta
+              personal de AWS.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.card} `}>
+        <div className={`${styles.rowCard}`}>
+          <div className={`${styles.cardBody}`}>
+            <p className="card-text">
+              Este panel frontend fue desarrollado utilizando{" "}
+              <strong>React con Typescript</strong>
+            </p>
+            <a
+              target="_blank"
+              href="https://github.com/Claudan/react-juegos-de-mesa"
+              rel="noreferrer">
+              Link del repositorio
+            </a>
           </div>
         </div>
       </div>

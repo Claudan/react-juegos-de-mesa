@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faGamepad, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
+import { faGithubAlt, faAws } from "@fortawesome/free-brands-svg-icons";
 import styles from "./sidebar.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -32,6 +32,12 @@ export const Sidebar = () => {
             <NavLink to="consultas" end>
               <FontAwesomeIcon icon={faCode} className={styles.faCode} />
               API REST
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="arquitectura" end>
+              <FontAwesomeIcon icon={faAws} className={styles.faAws} />
+              Arquitectura del sistema
             </NavLink>
           </li>
           <li>

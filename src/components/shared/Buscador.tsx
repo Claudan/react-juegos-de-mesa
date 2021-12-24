@@ -24,7 +24,7 @@ export const Buscador = () => {
 
   useEffect(() => {
     let sugerencias = Array<string>();
-    const MAX_SUGERENCIAS = 7;
+    const MAX_SUGERENCIAS = 8;
     autocomplete?.map((el) => {
       if (sugerencias.length < MAX_SUGERENCIAS) {
         sugerencias.push(el.nombre);
@@ -41,7 +41,7 @@ export const Buscador = () => {
     let sugerencias = Array<string>();
     let nombreJuego = "";
     let valor = "";
-    const MAX_SUGERENCIAS = 7;
+    const MAX_SUGERENCIAS = 8;
     state.autocomplete.map((juego: Juego) => {
       nombreJuego = juego.nombre.toLowerCase();
       valor = state.valorIngresado.toLocaleLowerCase();

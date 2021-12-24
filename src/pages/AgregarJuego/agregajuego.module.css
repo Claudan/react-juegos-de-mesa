@@ -35,11 +35,11 @@ nav {
 }
 
 .cantidadJugadoresMin {
-  padding-right: 5px;
+  padding-right: 5px !important;
 }
 
 .cantidadJugadoresMax {
-  padding-left: 5px;
+  padding-left: 5px !important;
 }
 .cardBody {
   flex: 1 1 auto;
@@ -89,4 +89,9 @@ nav {
 
 .spinner {
   color: white !important;
+}
+@media (max-width: 768px) {
+  .submitBtn {
+    width: 100%;
+  }
 }

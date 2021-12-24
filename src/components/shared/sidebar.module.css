@@ -24,6 +24,7 @@
 }
 .userContainer {
   text-align: center;
+  width: 250px;
 }
 
 .ul {
@@ -45,7 +46,7 @@
 }
 
 .faGamepad {
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 .faCode {
@@ -55,14 +56,19 @@
   margin-right: 12px;
 }
 .faGithubAlt {
-  margin-right: 12px;
+  margin-right: 15px;
+}
+.faAws {
+  margin-right: 10px;
 }
 .faPlus {
-  margin-right: 12px;
+  margin-right: 13px;
+  margin-left: 3px;
 }
 
 .menu {
-  padding: 10px 40px;
+  padding: 10px 10px 10px 20px;
+  width: 250px;
 }
 
 .tituloMenu {
