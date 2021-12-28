@@ -137,7 +137,7 @@ export const AgregaJuego = () => {
           return value[0].size <= sizeInBytes;
         }),
       email: Yup.string()
-        .email("El correo no tienen un formato válido")
+        .email("El correo no tiene un formato válido")
         .required("Requerido"),
       password: Yup.string().required("Requerido"),
     }),

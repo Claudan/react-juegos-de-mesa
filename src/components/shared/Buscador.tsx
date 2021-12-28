@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useAutocomplete } from "../../hooks/useAutocomplete";
 import { Juego } from "../../interfaces/autocompleteInterface";
 import { useNavigate } from "react-router-dom";
+import { env } from "process";
 
 export const Buscador = () => {
   const [state, setState] = useState({
@@ -53,7 +54,12 @@ export const Buscador = () => {
   }, [state.valorIngresado]);
 
   return (
-    <form action={`/juego-detallado`} className={styles.formBusqueda}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleNavigate(state.valorIngresado);
+      }}
+      className={styles.formBusqueda}>
       <span className={styles.spanBusqueda}>
         <FontAwesomeIcon icon={faSearch} className={styles.faSearch} />
       </span>

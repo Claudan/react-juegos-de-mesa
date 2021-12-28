@@ -31,7 +31,6 @@ export const PreviewJuego = ({ juego }: { juego: Juego }) => {
           </li>
           <li>Duración aproximada: {juego.duracion} minutos</li>
         </ul>
-        {/* <p className="card-text">descripcion</p> */}
         <a
           className={`${styles.valorar} btn btn-light`}
           onClick={handleNavigate}>
