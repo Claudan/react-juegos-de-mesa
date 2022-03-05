@@ -149,7 +149,7 @@ export const AgregaJuego = () => {
       <div className={`${styles.card} `}>
         <div className={`${styles.rowCard}`}>
           <div className={`${styles.cardBody}`}>
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit} noValidate autoComplete="off">
               <div className={"row"}>
                 <div className="form-group">
                   <label>Nombre del juego</label>

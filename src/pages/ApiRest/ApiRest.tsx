@@ -58,7 +58,7 @@ export const ApiRest = () => {
           <div className={`${styles.cardBody}`}>
             <p className="card-text">
               Para este mini proyecto desarrollé un microservicio rest (tiene
-              habilitado CORS), el cual provee los endpoints necesarios.
+              deshabilitado CORS sólo por motivos demostrativos).
             </p>
             <p className="card-text">
               A continuación se muestra un ejemplo que permite consultar por un
